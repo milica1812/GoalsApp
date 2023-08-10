@@ -21,7 +21,11 @@ export default function App() {
       </View>
       <View style={styles.outputs}>
         <Text>Your goals:</Text>
-        {inputGoals.map((goal) => <Text key={goal}>{goal}</Text>)}
+        {inputGoals.map((goal) =>
+          <View style={styles.goalSection}>
+            <Text style={styles.goalText} key={goal}>{goal}</Text>
+          </View>
+        )}
       </View>
     </View>
   );
@@ -52,5 +56,15 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flex: 10,
     paddingTop: 12
+  },
+  goalSection: {
+    margin: 7,
+    padding: 10,
+    borderRadius: 12,
+    backgroundColor: 'blue'
+  },
+  goalText:{
+    color: 'white',
+    fontSize: 14
   }
 });
