@@ -1,10 +1,15 @@
 import React from "react";
 import { View, TextInput, StyleSheet, Button } from "react-native";
 
-export default function UserInput({handlerGoalInput, handlerButtonGoalPress}) {
+export default function UserInput({ handlerGoalInput, value, handlerButtonGoalPress }) {
     return (
         <View style={styles.userInputs}>
-            <TextInput style={styles.inputs} onChangeText={handlerGoalInput} placeholder='Enter your goal...' />
+            <TextInput
+                style={styles.inputs}
+                onChangeText={handlerGoalInput}
+                placeholder='Enter your goal...'
+                value={value}
+            />
             <Button title='Add goal' onPress={handlerButtonGoalPress} />
         </View>
     );
@@ -16,7 +21,6 @@ const styles = StyleSheet.create({
         marginTop: '10%',
         justifyContent: 'space-between',
         alignItems: 'center',
-        flex: 1
     },
     inputs: {
         borderWidth: 1,
