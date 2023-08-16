@@ -8,11 +8,15 @@ export default function UserGoals({ inputGoals, onDeleteItem }) {
             <FlatList
                 data={inputGoals}
                 renderItem={({ item, index }) => (
-                    <Pressable onPress={() => onDeleteItem(index)}>
-                        <View style={styles.goalSection}>
+
+                    <View style={styles.goalSection}>
+                        <Pressable onPress={() => onDeleteItem(index)}
+                            android_ripple={{ color: '#dddddd' }}
+                            style={({ pressed }) => pressed && styles.pressedItem}> 
                             <Text style={styles.goalText}>{item.text}</Text>
-                        </View>
-                    </Pressable>
+                        </Pressable>
+                    </View>
+
 
                 )}
                 keyExtractor={(item, index) => index.toString()}
@@ -31,13 +35,16 @@ const styles = StyleSheet.create({
     },
     goalSection: {
         margin: 7,
-        padding: 10,
         borderRadius: 12,
         backgroundColor: 'blue'
     },
     goalText: {
+        padding: 10,
         color: 'white',
         fontSize: 14
+    },
+    pressedItem: {
+        color: '#dddddd'
     }
 })
 

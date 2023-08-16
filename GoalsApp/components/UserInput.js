@@ -1,25 +1,38 @@
 import React from "react";
-import { View, TextInput, StyleSheet, Button } from "react-native";
+import { View, TextInput, StyleSheet, Button, Modal } from "react-native";
 
-export default function UserInput({ handlerGoalInput, value, handlerButtonGoalPress }) {
+export default function UserInput({ handlerGoalInput, value, onCancel, handlerButtonGoalPress, visible }) {
     return (
-        <View style={styles.userInputs}>
-            <TextInput
-                style={styles.inputs}
-                onChangeText={handlerGoalInput}
-                placeholder='Enter your goal...'
-                value={value}
-            />
-            <Button title='Add goal' onPress={handlerButtonGoalPress} />
-        </View>
+        <Modal visible={visible} animationType='fade'>
+            <View style={styles.userInputs}>
+                <TextInput
+                    style={styles.inputs}
+                    onChangeText={handlerGoalInput}
+                    placeholder='Enter your goal...'
+                    value={value}
+                />
+                <View style={styles.btnContainer}>
+                    <View style={styles.btn}>
+                        <Button title='Add goal' onPress={() => handlerButtonGoalPress()} />
+                    </View>
+                    <View style={styles.btn}>
+                        <Button title='Cancel' onPress={() => onCancel()}/>
+
+                    </View>
+                </View>
+
+
+
+            </View>
+        </Modal>
+
     );
 }
 
 const styles = StyleSheet.create({
     userInputs: {
-        flexDirection: 'row',
-        marginTop: '10%',
-        justifyContent: 'space-between',
+        flex: 1,
+        marginTop: 20,
         alignItems: 'center',
     },
     inputs: {
@@ -28,4 +41,12 @@ const styles = StyleSheet.create({
         width: '70%',
         padding: 3,
     },
+    btnContainer: {
+        flexDirection: 'row',
+        marginTop: 7
+    },
+    btn: {
+        width: 100,
+        marginHorizontal: 7,
+    }
 })
